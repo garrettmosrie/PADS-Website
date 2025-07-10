@@ -45,7 +45,7 @@ app.post("/signals", async (req, res) => {
       return res.status(201).json({ signal: savedSignal, alert });
     }
 
-    const radius = 0.01; 
+    const radius = 0.05; 
     const lat = sensorLocation.latitude;
     const lon = sensorLocation.longitude;
 
