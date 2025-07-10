@@ -366,16 +366,21 @@ function App() {
           ) : (
             <ul style={{ listStyle: "none", padding: 0 }}>
               {recentFlights.map((flight, idx) => (
-                <li key={idx} style={{ marginBottom: "0.6rem", padding: "0.4rem", background: "#f2f2f2", borderRadius: "5px" }}>
-                  <strong>{flight.callsign || "N/A"}</strong><br />
-                  Altitude: {flight.altitude} m<br />
-                  Time Seen: {new Date(flight.timeSeen).toLocaleString()}<br />
-                  Origin: {flight.originCountry}
-                </li>
+                console.log("Raw flight timeSeen:", flight.timeSeen);
+
+                return (
+                  <li key={idx} style={{ marginBottom: "0.6rem", padding: "0.4rem", background: "#f2f2f2", borderRadius: "5px" }}>
+                    <strong>{flight.callsign || "N/A"}</strong><br />
+                    Altitude: {flight.altitude} m<br />
+                    Time Seen: {flight.timeSeen}<br />
+                    Origin: {flight.originCountry}
+                  </li>
+                );
               ))}
             </ul>
           )}
         </div>
+        
         <div style={{
           marginTop: "1rem",
           backgroundColor: "#f1f8e9",
