@@ -369,24 +369,7 @@ function App() {
                 <li key={idx} style={{ marginBottom: "0.6rem", padding: "0.4rem", background: "#f2f2f2", borderRadius: "5px" }}>
                   <strong>{flight.callsign || "N/A"}</strong><br />
                   Altitude: {flight.altitude} m<br />
-                  Time Seen: {
-                      (() => {
-                        try {
-                          const raw = flight.timeSeen;
-                          const date = typeof raw === "number"
-                            ? new Date(raw * 1000) 
-                            : new Date(raw);
-
-                          if (isNaN(date.getTime())) return "Invalid";
-
-                          const adjusted = new Date(date.getTime() - 4 * 60 * 60 * 1000);
-                          return adjusted.toLocaleTimeString();
-                        } catch (e) {
-                          return "Invalid";
-                        }
-                      })()
-                    }
-                    <br />
+                  Time Seen: {new Date(flight.timeSeen * 1000 - 4 * 3600 * 1000).toLocaleTimeString()}<br />
                   Origin: {flight.originCountry}
                 </li>
               ))}
