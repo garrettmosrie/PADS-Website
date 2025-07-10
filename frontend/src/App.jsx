@@ -365,20 +365,32 @@ function App() {
             <p style={{ textAlign: "center", color: "#777" }}>No recent flights detected.</p>
           ) : (
             <ul style={{ listStyle: "none", padding: 0 }}>
-              {recentFlights.map((flight, idx) => (
+              {recentFlights.map((flight, idx) => {
                 console.log("Raw flight timeSeen:", flight.timeSeen);
-
                 return (
-                  <li key={idx} style={{ marginBottom: "0.6rem", padding: "0.4rem", background: "#f2f2f2", borderRadius: "5px" }}>
-                    <strong>{flight.callsign || "N/A"}</strong><br />
-                    Altitude: {flight.altitude} m<br />
-                    Time Seen: {flight.timeSeen}<br />
+                  <li
+                    key={idx}
+                    style={{
+                      marginBottom: "0.6rem",
+                      padding: "0.4rem",
+                      background: "#f2f2f2",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    <strong>{flight.callsign || "N/A"}</strong>
+                    <br />
+                    Altitude: {flight.altitude} m
+                    <br />
+                    Time Seen: {flight.timeSeen}
+                    <br />
                     Origin: {flight.originCountry}
                   </li>
                 );
-              ))}
+              })}
             </ul>
+            
           )}
+          
         </div>
         
         <div style={{
