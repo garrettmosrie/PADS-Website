@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const fetchRecentFlights = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/recent-flights");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/recent-flights`);
         setRecentFlights(res.data.flights || []);
       } catch (err) {
         console.error("Flight log fetch error:", err);
@@ -34,7 +34,7 @@ function App() {
 
   const fetchSignals = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/signals");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/signals`);
       setSignals(res.data);
       setLastDetectedTime(
         res.data.length > 0 ? new Date(res.data[0].detectedAt) : null
@@ -46,7 +46,7 @@ function App() {
 
   const fetchSensor = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/sensor-location");
+      const res = await axios.get("https://pads-website.onrender.com/sensor-location");
       if (res.data) setSensorLocation(res.data);
     } catch (err) {
       console.error("Sensor fetch error:", err);
@@ -55,7 +55,7 @@ function App() {
 
   const clearSignals = async () => {
     try {
-      await axios.delete("http://localhost:5000/signals");
+      await axios.delete("https://pads-website.onrender.com/signals");
       setSignals([]);
       setLastDetectedTime(null);
       setElapsedSeconds(0);
@@ -70,7 +70,7 @@ function App() {
     fetchSensor();
     setLoading(false);
 
-    const socket = io("http://localhost:5000");
+    const socket = io("https://pads-website.onrender.com");
 
     socket.on("new-signal", (data) => {
     const { signal, alert } = data.signal ? data : { signal: data, alert: null };
