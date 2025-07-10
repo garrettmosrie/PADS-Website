@@ -369,7 +369,15 @@ function App() {
         <li key={idx} style={{ marginBottom: "0.6rem", padding: "0.4rem", background: "#f2f2f2", borderRadius: "5px" }}>
           <strong>{flight.callsign || "N/A"}</strong><br />
           Altitude: {flight.altitude} m<br />
-          Time Seen: {flight.timeSeen}<br />
+          Time Seen: {
+            new Intl.DateTimeFormat("en-US", {
+              timeZone: "America/New_York",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+              hour12: true
+            }).format(new Date(flight.timeSeen * 1000))
+          }<br />
           Origin: {flight.originCountry}
         </li>
       ))}
