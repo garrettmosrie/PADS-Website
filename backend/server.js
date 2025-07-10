@@ -56,8 +56,8 @@ app.post("/signals", async (req, res) => {
 
     const response = await axios.get("https://opensky-network.org/api/states/all", {
       auth: {
-        username: "gritzl",  
-        password: "Monkeyboy1!"    
+        username: "gritzl-api-client",  
+        password: "vMLh9N6gY3IP5DemfWOn9IVxYR0Cc6Rt"    
       },
       params: { lamin, lamax, lomin, lomax },
     });
