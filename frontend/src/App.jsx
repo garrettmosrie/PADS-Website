@@ -369,7 +369,7 @@ function App() {
                 <li key={idx} style={{ marginBottom: "0.6rem", padding: "0.4rem", background: "#f2f2f2", borderRadius: "5px" }}>
                   <strong>{flight.callsign || "N/A"}</strong><br />
                   Altitude: {flight.altitude} m<br />
-                  Time Seen: {flight.timeSeenLocal}<br />
+                  Time Seen: {new Date(new Date(flight.timeSeen).getTime() - 4 * 60 * 60 * 1000).toLocaleTimeString()}<br />
                   Origin: {flight.originCountry}
                 </li>
               ))}
