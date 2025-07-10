@@ -359,69 +359,57 @@ function App() {
         )}
 
         <hr style={{ margin: "1rem 0" }} />
-<h3 style={{ textAlign: "center", fontSize: "1.1rem" }}>Last 5 Nearby Flights</h3>
-<div style={{ maxHeight: "200px", overflowY: "auto", fontSize: "0.9rem" }}>
-  {recentFlights.length === 0 ? (
-    <p style={{ textAlign: "center", color: "#777" }}>No recent flights detected.</p>
-  ) : (
-    <ul style={{ listStyle: "none", padding: 0 }}>
-      {recentFlights.map((flight, idx) => (
-        <li key={idx} style={{ marginBottom: "0.6rem", padding: "0.4rem", background: "#f2f2f2", borderRadius: "5px" }}>
-          <strong>{flight.callsign || "N/A"}</strong><br />
-          Altitude: {flight.altitude} m<br />
-          Time Seen: {
-            new Intl.DateTimeFormat("en-US", {
-              timeZone: "America/New_York",
-              hour: "2-digit",
-              minute: "2-digit",
-              second: "2-digit",
-              hour12: true
-            }).format(new Date(flight.timeSeen * 1000))
-          }<br />
-          Origin: {flight.originCountry}
-        </li>
-      ))}
-    </ul>
-  )}
-</div>
-<div style={{
-  marginTop: "1rem",
-  backgroundColor: "#f1f8e9",
-  border: "1px solid #c5e1a5",
-  borderRadius: "8px",
-  padding: "1rem",
-  color: "#33691e"
-}}>
-  <h3 style={{ textAlign: "center", marginTop: 0 }}>Mini Status Panel</h3>
-  <p><strong>Total flights in radius:</strong> {flightsInRadius}</p>
-  <p><strong>Last OpenSky pull:</strong> {flightPullTime ? flightPullTime.toLocaleTimeString() : "N/A"}</p>
-  <p><strong>Sensor status:</strong> {sensorLocation ? "✅ Online" : "❌ Offline"}</p>
-</div>
-
-<div style={{
-  marginTop: "1rem",
-  backgroundColor: "#fff3e0",
-  border: "1px solid #ffcc80",
-  borderRadius: "8px",
-  padding: "1rem",
-  color: "#e65100"
-}}>
-  <h3 style={{ textAlign: "center", marginTop: 0 }}>Recent Unknowns</h3>
-  {unknownDetections.length === 0 ? (
-    <p style={{ textAlign: "center", color: "#777" }}>No recent unknown aircraft.</p>
-  ) : (
-    <ul style={{ paddingLeft: "1rem", margin: 0 }}>
-      {unknownDetections.map((entry, idx) => (
-        <li key={idx}>⚠️ Unknown aircraft detected at {entry.time}</li>
-      ))}
-    </ul>
-  )}
-</div>
-
-
+        <h3 style={{ textAlign: "center", fontSize: "1.1rem" }}>Last 5 Nearby Flights</h3>
+        <div style={{ maxHeight: "200px", overflowY: "auto", fontSize: "0.9rem" }}>
+          {recentFlights.length === 0 ? (
+            <p style={{ textAlign: "center", color: "#777" }}>No recent flights detected.</p>
+          ) : (
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              {recentFlights.map((flight, idx) => (
+                <li key={idx} style={{ marginBottom: "0.6rem", padding: "0.4rem", background: "#f2f2f2", borderRadius: "5px" }}>
+                  <strong>{flight.callsign || "N/A"}</strong><br />
+                  Altitude: {flight.altitude} m<br />
+                  Time Seen: {flight.timeSeenLocal}<br />
+                  Origin: {flight.originCountry}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div style={{
+          marginTop: "1rem",
+          backgroundColor: "#f1f8e9",
+          border: "1px solid #c5e1a5",
+          borderRadius: "8px",
+          padding: "1rem",
+          color: "#33691e"
+        }}>
+          <h3 style={{ textAlign: "center", marginTop: 0 }}>Mini Status Panel</h3>
+          <p><strong>Total flights in radius:</strong> {flightsInRadius}</p>
+          <p><strong>Last OpenSky pull:</strong> {flightPullTime ? flightPullTime.toLocaleTimeString() : "N/A"}</p>
+          <p><strong>Sensor status:</strong> {sensorLocation ? "✅ Online" : "❌ Offline"}</p>
+        </div>
+        <div style={{
+          marginTop: "1rem",
+          backgroundColor: "#fff3e0",
+          border: "1px solid #ffcc80",
+          borderRadius: "8px",
+          padding: "1rem",
+          color: "#e65100"
+        }}>
+          <h3 style={{ textAlign: "center", marginTop: 0 }}>Recent Unknowns</h3>
+          {unknownDetections.length === 0 ? (
+            <p style={{ textAlign: "center", color: "#777" }}>No recent unknown aircraft.</p>
+          ) : (
+            <ul style={{ paddingLeft: "1rem", margin: 0 }}>
+              {unknownDetections.map((entry, idx) => (
+                <li key={idx}>⚠️ Unknown aircraft detected at {entry.time}</li>
+              ))}
+            </ul>
+          )}
       </div>
-      
-    </div>
+    </div>  
+  </div>
   );
 }
 
