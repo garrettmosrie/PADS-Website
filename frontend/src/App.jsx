@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const fetchRecentFlights = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/recent-flights`);
+        const res = await axios.get("https://pads-website.onrender.com/api/recent-flights");
         setRecentFlights(res.data.flights || []);
       } catch (err) {
         console.error("Flight log fetch error:", err);
@@ -27,14 +27,14 @@ function App() {
     };
 
     fetchRecentFlights();
-    const interval = setInterval(fetchRecentFlights, 15000); // auto-refresh every 15s
+    const interval = setInterval(fetchRecentFlights, 10000);
     return () => clearInterval(interval);
   }, []);
 
 
   const fetchSignals = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/signals`);
+      const res = await axios.get("https://pads-website.onrender.com/signals");
       setSignals(res.data);
       setLastDetectedTime(
         res.data.length > 0 ? new Date(res.data[0].detectedAt) : null
