@@ -55,6 +55,10 @@ app.post("/signals", async (req, res) => {
     const lomax = lon + radius;
 
     const response = await axios.get("https://opensky-network.org/api/states/all", {
+      auth: {
+        username: "gritzl",  
+        password: "Monkeyboy1!"    
+      },
       params: { lamin, lamax, lomin, lomax },
     });
 
