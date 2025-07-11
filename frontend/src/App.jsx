@@ -359,7 +359,7 @@ function App() {
         )}
 
         <hr style={{ margin: "1rem 0" }} />
-        <h3 style={{ textAlign: "center", fontSize: "1.1rem" }}>Last 5 Nearby Flights</h3>
+        <h3 style={{ textAlign: "center", fontSize: "1.1rem" }}>Nearby Flights</h3>
         <div style={{ maxHeight: "200px", overflowY: "auto", fontSize: "0.9rem" }}>
           {recentFlights.length === 0 ? (
             <p style={{ textAlign: "center", color: "#777" }}>No recent flights detected.</p>
