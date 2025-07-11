@@ -381,7 +381,8 @@ function App() {
                     <br />
                     Altitude: {flight.altitude} m
                     <br />
-                    Time Seen: {flight.timeSeen}
+                    Time Seen: new Date{((flight.timeSeen || Date.now()) * 1000).toLocaleTimeString()}
+                    
                     <br />
                     Origin: {flight.originCountry}
                   </li>
