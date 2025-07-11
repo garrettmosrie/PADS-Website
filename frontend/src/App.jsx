@@ -401,6 +401,7 @@ function App() {
         }}>
           <h3 style={{ textAlign: "center", marginTop: 0 }}>Status Panel</h3>
           <p><strong>Total flights in radius:</strong> {flightsInRadius}</p>
+          <p><strong>Detection radius:</strong> 0.05° (~3.5 miles)</p>
           <p><strong>Last OpenSky pull:</strong> {flightPullTime ? flightPullTime.toLocaleTimeString() : "N/A"}</p>
           <p><strong>Sensor status:</strong> {sensorLocation ? "Online" : "❌ Offline"}</p>
         </div>
