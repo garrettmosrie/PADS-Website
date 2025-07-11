@@ -381,7 +381,7 @@ function App() {
                     <br />
                     Altitude: {flight.altitude} m
                     <br />
-                    Time Seen: {flight.timeSeen} (UTC)<br />
+                    Time Seen: {flight.timeSeen} (UTC)
                     <br />
                     Origin: {flight.originCountry}
                   </li>
