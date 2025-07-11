@@ -376,13 +376,11 @@ function App() {
                       borderRadius: "5px",
                     }}
                   >
-                    <strong>{flight.callsign || "N/A"}</strong>
-                    <br />
-                    Altitude: {flight.altitude} m
-                    <br />
-                    Time Seen: {flight.timeSeen} (UTC)
-                    <br />
-                    Origin: {flight.originCountry}
+                    <strong>{flight.callsign || "N/A"}</strong><br />
+                    Altitude: {flight.altitude} m<br />
+                    Time Seen: {flight.timeSeen} (UTC)<br />
+                    Origin: {flight.originCountry}<br />
+                    Lat: {flight.latitude?.toFixed(5)}, Lon: {flight.longitude?.toFixed(5)}
                   </li>
                 );
               })}
@@ -400,10 +398,10 @@ function App() {
           padding: "1rem",
           color: "#33691e"
         }}>
-          <h3 style={{ textAlign: "center", marginTop: 0 }}>Mini Status Panel</h3>
+          <h3 style={{ textAlign: "center", marginTop: 0 }}>Status Panel</h3>
           <p><strong>Total flights in radius:</strong> {flightsInRadius}</p>
           <p><strong>Last OpenSky pull:</strong> {flightPullTime ? flightPullTime.toLocaleTimeString() : "N/A"}</p>
-          <p><strong>Sensor status:</strong> {sensorLocation ? "✅ Online" : "❌ Offline"}</p>
+          <p><strong>Sensor status:</strong> {sensorLocation ? "Online" : "❌ Offline"}</p>
         </div>
         <div style={{
           marginTop: "1rem",

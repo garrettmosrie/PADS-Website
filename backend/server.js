@@ -208,7 +208,9 @@ app.get("/api/recent-flights", async (req, res) => {
         callsign: state[1].trim(),
         altitude: state[13],
         timeSeen: new Date((state[4] || Date.now()) * 1000).toLocaleTimeString(),
-        originCountry: state[2]
+        originCountry: state[2],
+        latitude: state[6],
+        longitude: state[5]
       }));
 
     res.json({ flights });
