@@ -20,6 +20,7 @@ function App() {
     const fetchRecentFlights = async () => {
       try {
         const res = await axios.get("https://pads-website.onrender.com/api/recent-flights");
+        console.log("Raw recent flights:", res.data.flights);
         setRecentFlights(res.data.flights || []);
       } catch (err) {
         console.error("Flight log fetch error:", err);
@@ -368,7 +369,6 @@ function App() {
               {recentFlights.map((flight, idx) => {
                 console.log("Raw flight timeSeen:", flight.timeSeen);
                 return (
-                  console.log("flight.timeSeen raw value:", flight.timeSeen);
                   <li
                     key={idx}
                     style={{
