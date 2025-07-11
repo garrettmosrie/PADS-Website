@@ -376,13 +376,12 @@ function App() {
                       borderRadius: "5px",
                     }}
                   >
-                    <strong>{flight.callsign || "N/A"}</strong><br />
+                      <strong>{flight.callsign || "N/A"}</strong><br />
                       Altitude: {flight.altitude} m<br />
                       Time Seen: {flight.timeSeen} (UTC)<br />
                       Origin: {flight.originCountry}<br />
-                      <span style={{ fontWeight: "600" }}>Lat:</span>{flight.latitude?.toFixed(5)}° 
-                      <br />
-                      <span style={{ fontWeight: "600", marginLeft: "0.5rem" }}>Lon:</span> {flight.longitude?.toFixed(5)}°
+                      <strong>Lat: {flight.latitude?.toFixed(5)}°</strong><br />
+                      <strong>Lon: {flight.longitude?.toFixed(5)}°</strong>
                   </li>
                 );
               })}
