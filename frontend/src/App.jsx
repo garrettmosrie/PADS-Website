@@ -368,6 +368,7 @@ function App() {
               {recentFlights.map((flight, idx) => {
                 console.log("Raw flight timeSeen:", flight.timeSeen);
                 return (
+                  console.log("flight.timeSeen raw value:", flight.timeSeen);
                   <li
                     key={idx}
                     style={{
