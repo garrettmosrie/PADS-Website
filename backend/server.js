@@ -186,8 +186,18 @@ app.get("/api/recent-flights", async (req, res) => {
     const lomin = sensorLocation.longitude - radius;
     const lomax = sensorLocation.longitude + radius;
 
+    const token = await getOpenSkyToken();
+
     const response = await axios.get("https://opensky-network.org/api/states/all", {
-      params: { lamin, lamax, lomin, lomax }
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        lamin,
+        lamax,
+        lomin,
+        lomax
+      }
     });
 
     const flights = (response.data.states || [])
