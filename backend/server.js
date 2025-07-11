@@ -7,6 +7,8 @@ import Sensor from "./models/Sensor.js";
 import http from "http";
 import { Server } from "socket.io";
 import axios from "axios";
+import { getOpenSkyToken } from "./openskyToken.js"; // Adjust the path if needed
+
 
 dotenv.config();
 connectDB();
@@ -54,13 +56,19 @@ app.post("/signals", async (req, res) => {
     const lomin = lon - radius;
     const lomax = lon + radius;
 
-    const response = await axios.get("https://opensky-network.org/api/states/all", {
-      auth: {
-        username: "gritzl-api-client",  
-        password: "vMLh9N6gY3IP5DemfWOn9IVxYR0Cc6Rt"    
-      },
-      params: { lamin, lamax, lomin, lomax },
-    });
+    const token = await getOpenSkyToken();
+
+      const response = await axios.get("https://opensky-network.org/api/states/all", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          lamin,
+          lamax,
+          lomin,
+          lomax
+        }
+      });
 
     const flights = (response.data.states || []).map((state) => ({
       latitude: state[6],
