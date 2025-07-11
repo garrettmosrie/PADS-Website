@@ -180,7 +180,7 @@ app.get("/api/recent-flights", async (req, res) => {
       return res.status(404).json({ message: "No sensor location available" });
     }
 
-    const radius = 0.5;
+    const radius = 0.05;
     const lamin = sensorLocation.latitude - radius;
     const lamax = sensorLocation.latitude + radius;
     const lomin = sensorLocation.longitude - radius;

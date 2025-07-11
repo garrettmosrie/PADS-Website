@@ -115,11 +115,11 @@ function App() {
     const interval = setInterval(() => {
       if (lastDetectedTime) {
         const seconds = Math.floor(
-          (Date.now() - lastDetectedTime.getTime()) / 1000
+          (Date.now() - lastDetectedTime.getTime()) / 5000
         );
         setElapsedSeconds(seconds);
       }
-    }, 1000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [lastDetectedTime]);
 
